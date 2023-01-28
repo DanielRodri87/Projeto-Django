@@ -18,6 +18,12 @@ class TodosProdutosView(TemplateView):
 
 class ProdutoDetalheView(TemplateView):
     template_name = "produtodetalhe.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        url_slug = self.kwargs['slug']
+        produto = Produto.objects.get(slug=url_slug)
+        context['detalhes'] = produto
+        return context
     
 class SobreView(TemplateView):
     template_name = "sobre.html"

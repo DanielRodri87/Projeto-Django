@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="container">
-    <h1>Todos os Produtos da Categoria</h1>
+    <h1>Todos os Produtos por Categoria</h1>
     <hr>
 
     {% for cat in todoscategorias %}
@@ -19,7 +19,7 @@
             <div class="card m-3 custom-card">
                 <img class="card-img-top" src="{{p.image.url}}" alt="{{p.titulo}}" style="object-fit:cover;">
                 <div class="card-body">
-                  <h4 class="card-title">{{p.titulo}}</h4>
+                  <a href="{%url 'lojaapp:detalhes' p.slug %}"><h4 class="card-title">{{p.titulo}}</a></h4>
                   <p class="card-desc">{{p.descricao}}</p>
                   <p class="card-text">Preço: <strike>R$ {{p.preco_mercado}}</strike> R% {{p.venda}}</p>
                   <a href="" class="btn btn-success">Comprar</a>
