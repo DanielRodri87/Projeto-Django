@@ -1,0 +1,8 @@
+.custom-card {
+    background-color: #ADD8E6; /* cor azul clara */
+    color: white; /* cor branca para o texto */
+  }
+
+.gradient-nav {
+    background: linear-gradient(to right, #0077be, #00c3ff);
+}
