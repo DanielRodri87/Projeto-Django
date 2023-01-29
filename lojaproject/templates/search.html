@@ -1,15 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
+
   <h2>Resultados da pesquisa</h2>
   {% if resultado %}
-  <h3>Resultados:</h3>
-  <ul>
+  <div class="container">
+    <div class="row">
       {% for produto in resultado %}
-          <li>{{ produto.titulo }} - {{ produto.descricao }}</li>
+        <div class="col-md-4">
+          <div class="card m-3 custom-card">
+            <img class="card-img-top slides" src="{{ produto.image1.url }}" alt="{{ produto.titulo }}" style="height:200px;object-fit:cover;">
+            <div class="card-body">
+              <h4 class="card-title">{{ produto.titulo }}</h4>
+              <p class="card-desc">{{ produto.descricao }}</p>
+              <a href="" class="btn btn-success">Comprar</a>
+            </div>
+          </div>
+        </div>
       {% endfor %}
-  </ul>
-{% else %}
-  <p>Nenhum resultado encontrado.</p>
-{% endif %}
+    </div>
+  </div>
+  {% else %}
+    <p>Nenhum resultado encontrado.</p>
+  {% endif %}
+
+  <script>
+    var slideIndex = [1,1,1,1];
+    function showSlides(n, no) {
+      var i;
+      var slides = document.getElementsByClassName("slides");
+      var image = [        ['{{ produto.image1.url }}', '{{ produto.image2.url }}', '{{ produto.image3.url }}', '{{ produto.image4.url }}'],
+        ['{{ produto.image1.url }}', '{{ produto.image2.url }}', '{{ produto.image3.url }}', '{{ produto.image4.url }}'],
+        ['{{ produto.image1.url }}', '{{ produto.image2.url }}', '{{ produto.image3.url }}', '{{ produto.image4.url }}'],
+        ['{{ produto.image1.url }}', '{{ produto.image2.url }}', '{{ produto.image3.url }}', '{{ produto.image4.url }}']
+      ];
+      if (n > image[no].length) {slideIndex[no] = 1}
+      if (n < 1) {slideIndex[no] = image[no].length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].src = image[i][slideIndex[i]-1];
+      }
+      slideIndex[no]++;
+      setTimeout(function(){ showSlides(slideIndex[no], no); }, 2000); // tempo em milissegundos
+    }
+    showSlides(1, 0);
+    showSlides(1, 1);
+    showSlides(1, 2);
+    showSlides(1, 3);
+  </script>
+  
+
 {% endblock %}
