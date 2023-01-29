@@ -24,7 +24,7 @@ class ProdutoDetalheView(TemplateView):
         context = super().get_context_data(**kwargs)
         url_slug = self.kwargs['slug']
         produto = Produto.objects.get(slug=url_slug)
-        context['detalhes'] = Produto
+        context['detalhes'] = produto
         return context
     
 class SobreView(TemplateView):
