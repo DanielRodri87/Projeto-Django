@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Resultados da pesquisa</h2>
+  {% if resultado %}
+  <h3>Resultados:</h3>
+  <ul>
+      {% for produto in resultado %}
+          <li>{{ produto.titulo }} - {{ produto.descricao }}</li>
+      {% endfor %}
+  </ul>
+{% else %}
+  <p>Nenhum resultado encontrado.</p>
+{% endif %}
+{% endblock %}

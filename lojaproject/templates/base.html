@@ -37,15 +37,17 @@
                 <a class="nav-link" href="/admin/">Adicionar</a>
               </li>
               <hr>
-              <form class="form-inline my-50 my-lg-50 ml-auto">
-                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
-            </form>
-            <li>
-              <!-- botão com icone de lupa  -->
-              <button class="btn btn-outline-white my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-
-            </li>
-            </ul>
+              <li>
+                <form action="/search/" method="get" class="form-inline">
+                  <input type="text" name="q" placeholder="Digite aqui sua pesquisa" class="form-control">
+                </form>
+                <li>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-search"></i>
+                </button>
+              </li>
+              </li>
+              </ul>
           </div>
         </nav>
       </header>
