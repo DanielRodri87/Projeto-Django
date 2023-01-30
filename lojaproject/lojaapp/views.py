@@ -47,6 +47,7 @@ class AddCarroView(TemplateView):
                 carroproduto.save()
                 carro_obj.total += produto_obj.venda
                 carroproduto.save()
+                carro_obj.save()
             else:
                 carroproduto = CarroProduto.objects.create(                    
                     carro = carro_obj,
@@ -58,11 +59,16 @@ class AddCarroView(TemplateView):
                 
             carro_obj.total += produto_obj.venda
             carroproduto.save()
+            carro_obj.save()
           
             
         else:
             carro_obj = Carro.objects.create(total=0)
             self.request.session['carro_id'] = carro_obj.id
+            carro_obj.total += produto_obj.venda
+            carroproduto.save()
+            carro_obj.save()
+            carro_obj.save()
             
             carroproduto = CarroProduto.objects.create(                    
                 carro = carro_obj,
@@ -74,6 +80,7 @@ class AddCarroView(TemplateView):
             
             carro_obj.total += produto_obj.venda
             carroproduto.save()
+            carro_obj.save()
             
         return context
     
