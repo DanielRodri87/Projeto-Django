@@ -27,6 +27,23 @@ class ProdutoDetalheView(TemplateView):
         context['detalhes'] = produto
         return context
     
+class AddCarroView(TemplateView):
+    template_name = "addcarro.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        produto_id = self.kwargs['pro_id']
+        produto_obj = Produto.objects.get(id=produto_id)
+        Carro_id = self.request.session.get('carro_id', None)
+
+        if Carro_id:
+            carro_obj = Carro.objects.get(id=Carro_id)
+            
+        else:
+            carro_obj = Carro.objects.create(total=0)
+            self.request.session['carro_id'] = carro_obj.id
+            
+    
 class SobreView(TemplateView):
     template_name = "sobre.html"
     

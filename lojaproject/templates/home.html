@@ -11,12 +11,12 @@
         <!-- criar contador que começa do 1 e a cada 2s ele soma 1, e ao chegar em 4 volte para 1-->
         <div class="col-md-4">
             <div class="card m-3 custom-card">
-                <img class="card-img-top" src="{{p.image1}}" alt="{{p.titulo}}" style="height:200px;object-fit:cover;">
+                <img class="card-img-top" src="{{p.image1.url}}" alt="{{p.titulo}}" style="height:200px;object-fit:cover;">
                 <div class="card-body">
                   <h4 class="card-title">{{p.titulo}}</h4>
                   <p class="card-desc">{{p.descricao}}</p>
                   <p class="card-text">Preço: <strike>R$ {{p.preco_mercado}}</strike><br>Promoção: R${{p.venda}}</p>
-                  <a href="" class="btn btn-success">Comprar</a>
+                  <a href="{% url 'lojaapp:addcarro' p.id%}" class="btn btn-success">Comprar</a>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@ class Produto(models.Model):
 
 class Carro(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True, blank=True)
-    total = models.PositiveIntegerField()
+    total = models.PositiveIntegerField(default=0)
     criado_em = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

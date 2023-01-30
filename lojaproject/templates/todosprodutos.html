@@ -22,7 +22,7 @@
                   <a href="{%url 'lojaapp:detalhes' p.slug %}"><h4 class="card-title">{{p.titulo}}</a></h4>
                   <p class="card-desc">{{p.descricao}}</p>
                   <p class="card-text">Preço: <strike>R$ {{p.preco_mercado}}</strike> R% {{p.venda}}</p>
-                  <a href="" class="btn btn-success">Comprar</a>
+                  <a href="{% url 'lojaapp:addcarro' p.id%}" class="btn btn-success">Comprar</a>
                 </div>
             </div>
         </div>
