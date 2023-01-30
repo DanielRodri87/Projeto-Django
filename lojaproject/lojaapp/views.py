@@ -38,11 +38,44 @@ class AddCarroView(TemplateView):
 
         if Carro_id:
             carro_obj = Carro.objects.get(id=Carro_id)
+            produto_no_carro = carro_obj.carroproduto_set.filter(produto=produto_obj)
+        
+            if produto_no_carro.exists():
+                carroproduto = produto_no_carro.last()
+                carroproduto.quantidade += 1
+                carroproduto.subtotal += produto_obj.venda
+                carroproduto.save()
+                carro_obj.total += produto_obj.venda
+                carroproduto.save()
+            else:
+                carroproduto = CarroProduto.objects.create(                    
+                    carro = carro_obj,
+                    produto = produto_obj,
+                    avaliacao = produto_obj.venda,
+                    quantidade = 1,
+                    subtotal = produto_obj.venda,
+                )
+                
+            carro_obj.total += produto_obj.venda
+            carroproduto.save()
+          
             
         else:
             carro_obj = Carro.objects.create(total=0)
             self.request.session['carro_id'] = carro_obj.id
             
+            carroproduto = CarroProduto.objects.create(                    
+                carro = carro_obj,
+                produto = produto_obj,
+                avaliacao = produto_obj.venda,
+                quantidade = 1,
+                subtotal = produto_obj.venda,
+            )
+            
+            carro_obj.total += produto_obj.venda
+            carroproduto.save()
+            
+        return context
     
 class SobreView(TemplateView):
     template_name = "sobre.html"
@@ -59,11 +92,9 @@ class SearchView(TemplateView):
         resultado = None
         if query:
             resultado = Produto.objects.filter(
-                Q(titulo__icontains=query) | Q(descricao__icontains=query)
+                Q(titulo_icontains=query) | Q(descricao_icontains=query)
             )
         context.update({
             'resultado': resultado
         })
         return context
-    
-    
