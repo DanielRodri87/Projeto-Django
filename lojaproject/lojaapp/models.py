@@ -76,7 +76,7 @@ class Pedido_order(models.Model):
     email = models.EmailField(null=True, blank=True)
     subtotal = models.PositiveIntegerField()
     disconto = models.PositiveIntegerField()
-    total = models.PositiveIntegerField()
+    total = models.PositiveIntegerField(default=0)
     pedido_status = models.PositiveIntegerField(choices=PEDIDO_STATUS)
     criado_em = models.DateTimeField(auto_now_add=True)
     
