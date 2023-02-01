@@ -99,9 +99,14 @@ class SearchView(TemplateView):
         resultado = None
         if query:
             resultado = Produto.objects.filter(
-                Q(titulo_icontains=query) | Q(descricao_icontains=query)
+                Q(titulo__icontains=query) | Q(descricao__icontains=query)
             )
         context.update({
             'resultado': resultado
         })
         return context
+
+    
+    
+class MeuCarroView(TemplateView):
+    template_name = "meucarro.html"
