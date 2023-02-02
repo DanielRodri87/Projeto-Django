@@ -3,27 +3,48 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <h4>Itens do Carrinho</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Produto</th>
-                        <th>Avaliação</th>
-                        <th>Quantidade</th>
-                        <th>Subtotal</th>
-                        <th>Ação</th>
-                    </tr>
-                    <tbody>
-
-                    </tbody>
-                </thead>
-
-            </table>
-        </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h4 class="mb-3">Itens do Carrinho</h4>
+      <table class="table table-striped .mx-auto">
+        <thead class="thead-dark">
+            <tr>
+              <th>Código</th>
+              <th>Produto</th>
+              <th>Avaliação</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+        <tbody>
+          {% for cp in carro.carroproduto_set.all %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{cp.produto.titulo}}</td>
+              <td>
+                <i id="star" style="color: gold;" class="fas fa-star"></i>
+                <i id="star" style="color: gold;" class="fas fa-star"></i>
+                <i id="star" style="color: gold;" class="fas fa-star"></i>
+                <i id="star" style="color: gold;" class="fas fa-star"></i>
+                <i id="star" style="color: gold;" class="fas fa-star-half-alt"></i>
+              </td>
+              <td>{{cp.quantidade}}</td>
+              <td>{{cp.subtotal}}</td>
+              <td>
+                <a href="" class="btn btn-success btn-sm">Add</a>
+                <a href="" class="btn btn-warning btn-sm">Edit</a>
+                <a href="" class="btn btn-danger btn-sm">Del</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 
 {% endblock %}
+<style>
+
+</style>
