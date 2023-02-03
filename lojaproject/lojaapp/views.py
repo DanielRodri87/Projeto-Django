@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from.models import *
+from django.db.models import Sum
 # importar Q
 from django.db.models import Q
 
@@ -114,6 +115,8 @@ class MeuCarroView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         carro_id = self.request.session.get('carro_id', None)
+        total_quantity = CarroProduto.objects.filter(carro_id=carro_id).aggregate(Sum('quantidade'))['quantidade__sum']
+        total_value = CarroProduto.objects.filter(carro_id=carro_id).aggregate(Sum('subtotal'))['subtotal__sum']
 
         if carro_id:
             carro = Carro.objects.get(id=carro_id)           

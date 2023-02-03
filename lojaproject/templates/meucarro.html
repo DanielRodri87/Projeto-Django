@@ -16,7 +16,8 @@
               <th>Total</th>
               <th>Ação</th>
             </tr>
-          </thead>
+        </thead>
+
         <tbody>
           {% for cp in carro.carroproduto_set.all %}
             <tr>
@@ -39,12 +40,28 @@
             </tr>
           {% endfor %}
         </tbody>
+        <thead class="thead-dark">
+          <tr>
+            <hr>
+            <th>Quantidade Total</th>
+            <th>Valor Final</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>{{ total_quantity }}</td>
+              <td>{{ total_value }}</td>
+            </tr>
+        </tbody>
+        <pre>
+          {{ total_quantity }}
+          {{ total_value }}
+        </pre>
+        
       </table>
     </div>
   </div>
 </div>
 
 {% endblock %}
-<style>
 
-</style>
