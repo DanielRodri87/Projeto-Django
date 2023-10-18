@@ -10,12 +10,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        /* Adicione estilos personalizados para o navbar aqui */
+        .navbar-custom {
+            background-color: #1e4878; /* Cor de fundo mais escura */
+        }
 
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #fff; /* Cor do texto no navbar */
+        }
+    </style>
 </head>
 <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light navbar navbar-dark bg-primary ">
-        <a class="navbar-brand col m-2" href="#">Loja do Ingá</a>
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-custom"> <!-- Adicione a classe "navbar-custom" aqui -->
+        <a class="navbar-brand col m-2" href="#">Loja do Daniel</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -55,10 +65,9 @@
         </nav>
       </header>
 
-    {%block content%}
+    {% block content %}
 
-    {%endblock content%}
-
+    {% endblock content %}
 
 </body>
 </html>

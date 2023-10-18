@@ -1,17 +1,62 @@
+<!DOCTYPE html>
 {% extends "base.html" %}
 {% block title %}HOME{% endblock title %}
 {% block content %}
+<style>
+  /* Estilos para o título */
+  .custom-title {
+    font-size: 36px;
+    color: #333; /* Cor do texto do título */
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* Estilos para os cartões de produtos */
+  .custom-card {
+    background-color: #fff; /* Cor de fundo dos cartões */
+    border: 1px solid #ccc; /* Borda ao redor dos cartões */
+    border-radius: 10px;
+    height: 100%; /* Altura fixa para os cartões */
+    margin: 10px; /* Margem externa entre os cartões */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efeito de sombra */
+  }
+
+  .custom-card .card-img-top {
+    object-fit: cover; /* A imagem se ajustará para cobrir todo o espaço disponível */
+    height: 200px; /* Altura fixa para a imagem */
+    border-top-left-radius: 10px; /* Arredonda os cantos superiores esquerdos */
+    border-top-right-radius: 10px; /* Arredonda os cantos superiores direitos */
+  }
+
+  .custom-card .card-title {
+    font-size: 24px;
+    color: #333; /* Cor do título do cartão */
+  }
+
+  .card-desc {
+    color: #666; /* Cor do texto de descrição do cartão */
+  }
+
+  .custom-card .card-text {
+    color: #333; /* Cor do texto de preço e promoção */
+  }
+
+  .btn-success {
+    background-color: #28a745; /* Cor de fundo do botão "Comprar" */
+    color: #fff; /* Cor do texto do botão */
+    border: none;
+  }
+</style>
 
 <div class="container">
-    <h1 class="text-center">SEJA BEM-VINDO A LOJA DO INGÁ</h1>
+    <h1 class="text-center custom-title">SEJA BEM-VINDO À MINHA LOJA</h1>
     <hr>
 
     <div class="row mt-3">
         {% for p in produto_list %}
-        <!-- criar contador que começa do 1 e a cada 2s ele soma 1, e ao chegar em 4 volte para 1-->
         <div class="col-md-4">
             <div class="card m-3 custom-card">
-                <img class="card-img-top" src="{{p.image.url}}" alt="{{p.titulo}}" style="height:200px;object-fit:cover;">
+                <img class="card-img-top" src="{{p.image.url}}" alt="{{p.titulo}}">
                 <div class="card-body">
                   <h4 class="card-title">{{p.titulo}}</h4>
                   <p class="card-desc">{{p.descricao}}</p>
@@ -20,8 +65,7 @@
                 </div>
             </div>
         </div>
-        {%endfor%}
+        {% endfor %}
     </div>
 </div>
-
 {% endblock %}
